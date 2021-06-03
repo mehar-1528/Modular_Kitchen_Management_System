@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Installment</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="../products/products.css">
+    </head>
+    <style>
+         body {
+    background-color: #feffde;
+}
+
+.nav-color, .nav-link {
+    color: #fff;
+    background-color: #ce1212;
+}
+
+.nav-link:hover{
+    color: #fff;
+}
+
+.nav-item {
+    padding:0 30px;
+}
+
+.item-1 {
+    padding-left: 200px;
+}
+
+.top-section {
+    margin: 30px 0 0 35.5%;
+    padding-bottom: 0;
+}
+
+
+.products {
+    margin: 50px 100px;
+
+}
+
+.table-products {
+    width: 100%;
+}
+
+/*.product-row {
+    text-align: center;
+    background-color: #fff;
+    padding: 50px;
+}*/
+
+.product-data {
+    padding: 10px 0;
+}
+
+table{
+    border: solid #ce1212;
+    padding: 100px;
+}
+
+.product-btn {
+    background: #ff1a1a;
+    background-image: -webkit-linear-gradient(top, #ff1a1a, #ce1212);
+    background-image: -moz-linear-gradient(top, #ff1a1a, #ce1212);
+    background-image: -ms-linear-gradient(top, #ff1a1a, #ce1212);
+    background-image: -o-linear-gradient(top, #ff1a1a, #ce1212);
+    background-image: linear-gradient(to bottom, #ff1a1a, #ce1212);
+    -webkit-border-radius: 15;
+    -moz-border-radius: 15;
+    border-radius: 15px;
+    font-family: Arial;
+    color: #ffffff;
+    padding: 10px 15px;
+    text-decoration: none;
+    width: 150px;
+    border-width: 0;
+  }
+  
+  .product-btn:hover {
+    background: #ce1212;
+    background-image: -webkit-linear-gradient(top, #ce1212, #ff1a1a);
+    background-image: -moz-linear-gradient(top, #ce1212, #ff1a1a);
+    background-image: -ms-linear-gradient(top, #ce1212, #ff1a1a);
+    background-image: -o-linear-gradient(top, #ce1212, #ff1a1a);
+    background-image: linear-gradient(to bottom, #ce1212, #ff1a1a);
+    text-decoration: none;
+  }
+
+  .add-btn {
+      margin-right: 175px;
+  }
+
+  .product-table-heaidng {
+      text-align: center;
+  }
+
+  h3{
+      text-transform: uppercase;
+      padding-top: 100px;
+  }
+
+  .heading-1 {
+      padding-top: 0;
+  }
+
+  .product-span {
+      padding-left: 29%;
+  }
+
+
+  td, th {
+      text-align: center;
+      border: 1px solid black;
+  }
+
+  input {
+      width: 100px;
+  }
+
+  .right-btn {
+      margin-left: 78%;
+      margin-top: 50px;
+  }
+  .receipt-btn{
+     
+      width: 250px;
+  }
+    </style>
+    <body>
+        
+       
+        <section class="products">
+            <div class="product-table-heading">
+                <h3 class="heading-1">Installment</h3>
+            </div>
+                
+     
+            <form method="POST" action="/installment/{{customer.id}}/save/">
+                {% csrf_token %}
+                <label for="amount">Payment Amount:</label><br>
+                <input  class="form-control" type="text" id="amount" name="amount"><br>
+    
+                <label for="pdate">Date:</label><br>
+                <input  class="form-control" type="date" id="pdate" name="pdate"><br>
+    
+                <label for="mop">Mode Of Payment:</label><br>
+                <!--<input  class="form-control" type="mop" id="mop" name="mop"><br>-->
+                <select name="mop" id="" class="form-control">
+                    <option value="cash">cash</option>
+                    <option value="cheque">cheque</option>
+                    <option value="net_banking">net banking</option>
+
+                </select>
+
+                <label for="cheque">Cheque/acc Number:</label><br>
+                <input  class="form-control" type="cheque" id="cheque" name="cheque"><br>
+                <input type="submit" value="submit" class="product-btn add-btn">
+                </form>
+               
+                    <table class="table-products">
+                        <tr class="product-row">
+                           
+                            <th class="product-data">Amount </th>
+                            <th class="product-data">Date</th>
+                            <th class="product-data">Mode of payment</th>
+                            <th class="product-data">Cheque/acc no</th>
+                           <!-- <th class="product-data">Balance</th>-->
+                            <th class="product-data">Receipt</th>
+                       </tr>
+                        <tr class="product-row">
+                            {% for Install in install %}
+                           
+                            <td class="product-data">{{Install.amount_paid}}</td>
+                            <td class="product-data">{{Install.date}}</td>
+                            <td class="product-data">{{Install.mode_of_pay}}</td>
+                            <td class="product-data"> {{Install.chequeno}}</td>
+                           <!-- <td class="product-data">{{balance.the_sum}}</td>-->
+                            <td class="product-data"><a class="product-btn " href="{% url 'receipt' Install.id%}" >Generate Receipt</a></td>
+                        </tr>
+                        {% endfor%}
+                          
+                    </table>
+                    </section>
+                   
+                    </body>
+                    </html>
+          
+          
+        
