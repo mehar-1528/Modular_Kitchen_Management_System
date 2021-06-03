@@ -1,1 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../products/products.css">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<style>
+  .inforide {
+    box-shadow: 1px 2px 8px 0px #f1f1f1;
+    background-color: white;
+    border-radius: 8px;
+    height: 125px;
+  }
+  
+  .rideone img {
+    width: 70%;
+  }
+  
+  .ridetwo img {
+    width: 60%;
+  }
+  
+  .ridethree img {
+    width: 50%;
+  }
+
+  .rideone {
+    background-color: #ce1212;
+    padding-top: 25px;
+    border-radius: 8px 0px 0px 8px;
+    text-align: center;
+    height: 125px;
+    margin-left: 15px;
+  }
+  
+  .ridetwo {
+    background-color: #ce1212;
+    padding-top: 30px;
+    border-radius: 8px 0px 0px 8px;
+    text-align: center;
+    height: 125px;
+    margin-left: 15px;
+  }
+  .ridethree {
+    background-color: #ce1212;
+    padding-top: 35px;
+    border-radius: 8px 0px 0px 8px;
+    text-align: center;
+    height: 125px;
+    margin-left: 15px;
+  }
+  
+  .fontsty {
+    margin-right: -15px;
+  }
+  body {
+background-color: #feffde;
+}
+
+.nav-color, .nav-link {
+color: #fff;
+background-color: #ce1212;
+}
+
+.nav-link:hover{
+color: #fff;
+}
+
+.nav-item {
+padding:0 30px;
+}
+
+.item-1 {
+padding-left: 200px;
+}
+
+.top-section {
+margin: 30px 0 0 35.5%;
+padding-bottom: 0;
+}
+
+
+.products {
+margin: 50px 100px;
+
+}
+
+.table-products {
+width: 100%;
+}
+
+/*.product-row {
+text-align: center;
+background-color: #fff;
+padding: 50px;
+}*/
+
+/*.product-data {
+padding: 20px 50px;
+}*/
+
+table{
+border: solid #ce1212;
+padding: 100px;
+}
+
+.product-btn {
+background: #ff1a1a;
+background-image: -webkit-linear-gradient(top, #ff1a1a, #ce1212);
+background-image: -moz-linear-gradient(top, #ff1a1a, #ce1212);
+background-image: -ms-linear-gradient(top, #ff1a1a, #ce1212);
+background-image: -o-linear-gradient(top, #ff1a1a, #ce1212);
+background-image: linear-gradient(to bottom, #ff1a1a, #ce1212);
+-webkit-border-radius: 15;
+-moz-border-radius: 15;
+border-radius: 15px;
+font-family: Arial;
+color: #ffffff;
+padding: 10px 15px;
+text-decoration: none;
+width: 150px;
+border-width: 0;
+}
+
+.product-btn:hover {
+background: #ce1212;
+background-image: -webkit-linear-gradient(top, #ce1212, #ff1a1a);
+background-image: -moz-linear-gradient(top, #ce1212, #ff1a1a);
+background-image: -ms-linear-gradient(top, #ce1212, #ff1a1a);
+background-image: -o-linear-gradient(top, #ce1212, #ff1a1a);
+background-image: linear-gradient(to bottom, #ce1212, #ff1a1a);
+text-decoration: none;
+}
+
+.add-btn {
+margin-right: 175px;
+}
+
+.product-table-heaidng {
+text-align: center;
+}
+
+h3{
+text-transform: uppercase;
+padding-top: 100px;
+}
+
+.heading-1 {
+padding-top: 0;
+}
+
+.product-span {
+padding-left: 29%;
+}
+td, th {
+text-align: center;
+border: 1px solid black;
+}
+
+input {
+width: 100px;
+}
+
+.right-btn {
+margin-left: 78%;
+margin-top: 50px;
+
+}
+
+.form-section{
+padding: 50px;
+}
+.form-section .form-control{
+width: 50%;
+}
+</style>
+<body>
+  <nav class="navbar navbar-expand-lg nav-color nav-fixed">
+    <div class="container-fluid">
+      <a class="navbar-brand nav-link" href="#">SANJIVINI HOME SOLUTIONS</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item item-1">
+            <a class="nav-link" aria-current="page" href="{% url 'homepage'%}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'customersview'%}">Customers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'designer'%}">Designer</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'products'%}">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'accessoriesview'%}">Accessories</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <h1 style="text-align:center">Sanjivini Home Solutions</h1>
+
+      <!-- Icon Cards-->
+        <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4">
+            <div class="inforide">
+              <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-4 rideone">
+                  <!--
+                    <img src="https://vignette.wikia.nocookie.net/nationstates/images/2/29/WS_Logo.png/revision/latest?cb=20080507063620"> -->
+                </div>
+                <div class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty">
+                    <h4>Full Kitchen Customers</h4>
+                    <h2>{{fullcust}}</h2>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4">
+            <div class="inforide">
+              <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-4 ridetwo">
+                  <!--
+                    <img src="https://vignette.wikia.nocookie.net/nationstates/images/2/29/WS_Logo.png/revision/latest?cb=20080507063620">  -->
+                </div>
+                <div class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty">
+                    <h4>Retail Customers</h4>
+                    <h2>{{retail}}</h2>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4">
+            <div class="inforide">
+              <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-4 ridethree">
+                  <!--
+                    <img src="https://vignette.wikia.nocookie.net/nationstates/images/2/29/WS_Logo.png/revision/latest?cb=20080507063620"> -->
+                </div>
+                <div class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty">
+                    <h4>Accessories Sold</h4>
+                    <h2>{{product.co}}</h2>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4">
+          <div class="inforide">
+            <div class="row">
+              <div class="col-lg-3 col-md-4 col-sm-4 col-4 ridethree">
+                <!--
+                  <img src="https://vignette.wikia.nocookie.net/nationstates/images/2/29/WS_Logo.png/revision/latest?cb=20080507063620"> -->
+              </div>
+              <div class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty">
+                  <h4>Products Sold</h4>
+                  <h2>{{acc.po}}</h2>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4">
+        <div class="inforide">
+          <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-4 ridethree">
+              <!--
+                <img src="https://vignette.wikia.nocookie.net/nationstates/images/2/29/WS_Logo.png/revision/latest?cb=20080507063620"> -->
+            </div>
+            <div class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty">
+                <h4>Customers Today</h4>
+                <h2>{{cust}}</h2>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4">
+      <div class="inforide">
+        <div class="row">
+          <div class="col-lg-3 col-md-4 col-sm-4 col-4 ridethree">
+            <!--
+              <img src="https://vignette.wikia.nocookie.net/nationstates/images/2/29/WS_Logo.png/revision/latest?cb=20080507063620"> -->
+          </div>
+          <div class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty">
+              <h4>Total Sales</h4>
+              <h2>{{amount.the_sum}}</h2>
+          </div>
+        </div>
+      </div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
 
