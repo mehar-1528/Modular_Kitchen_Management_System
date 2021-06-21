@@ -2,14 +2,17 @@ from django.db import models
 from django.db.models.deletion import CASCADE
 from django.db.models.fields import CharField, DateField
 from django.db.models.fields.related import ForeignKey
+from django.core.validators import RegexValidator
 
 # Create your models here.
 
 
 
 class DesignerModel(models.Model):
-    dname =models.CharField(max_length= 100)
-    dph_no =models.CharField(max_length=10)
+    alpha = RegexValidator(r'^[a-zA-Z]*$', 'Only Alphabets Are Allowed.')
+    phone = RegexValidator(r'^[0-9]{10}$', 'Enter Valid Mobile Number')
+    dname =models.CharField(max_length= 100, validators=[alpha])
+    dph_no =models.CharField(max_length=10,validators=[phone])
     daddress=models.CharField(max_length=400)
 
     def __str__(self):
@@ -20,10 +23,12 @@ class CustomerModel(models.Model):
         ('Retail Customer','Retail Customer'),
         ('Full Kitchen Customer','Full Kitchen Customer'),
     )
-    fname = models.CharField(max_length=30 )
-    mname = models.CharField(max_length=30,null =True ,blank=True)
-    lname = models.CharField(max_length=30,null =True,blank=True)
-    ph_no=models.CharField(max_length=10,null=True,blank=True)
+    alpha = RegexValidator(r'^[a-zA-Z]*$', 'Only Alphabets Are Allowed.')
+    phone = RegexValidator(r'^[0-9]{10}$', 'Enter Valid Mobile Number')
+    fname = models.CharField(max_length=30, validators=[alpha] )
+    mname = models.CharField(max_length=30,null =True ,blank=True,validators=[alpha] )
+    lname = models.CharField(max_length=30,null =True,blank=True,validators=[alpha] )
+    ph_no=models.CharField(max_length=10,null=True,blank=True,validators=[phone])
     address=models.CharField(max_length=400,null =True,blank=True)
     walk_in_date=models.DateField(null =True,blank=True)
     customer_type=models.CharField(max_length=100,null =True,choices=TYPE)
@@ -38,7 +43,8 @@ class CustomerModel(models.Model):
         return self.fname
 
 class productCategoryModel(models.Model):
-    name = models.CharField(max_length=30, primary_key=True)
+    alpha = RegexValidator(r'^[a-zA-Z]*$', 'Only Alphabets Are Allowed.')
+    name = models.CharField(max_length=30, primary_key=True ,validators=[alpha])
     hsn = models.CharField(max_length=30)
     gst = models.FloatField()
 
@@ -46,8 +52,9 @@ class productCategoryModel(models.Model):
         return self.name
 
 class productModel(models.Model):
+    alpha = RegexValidator(r'^[a-zA-Z]*$', 'Only Alphabets Are Allowed.')
     category = ForeignKey(productCategoryModel, on_delete=models.CASCADE)
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=30 ,validators=[alpha])
     dealersPrice = models.FloatField()
     mrp = models.FloatField()
 
@@ -56,7 +63,8 @@ class productModel(models.Model):
 
 
 class accessoriesCategoryModel(models.Model):
-    name = models.CharField(max_length=30, primary_key=True)
+    alpha = RegexValidator(r'^[a-zA-Z]*$', 'Only Alphabets Are Allowed.')
+    name = models.CharField(max_length=30, primary_key=True,validators=[alpha])
     hsn = models.CharField(max_length=30)
     gst = models.FloatField()
 
