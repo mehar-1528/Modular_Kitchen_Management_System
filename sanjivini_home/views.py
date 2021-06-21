@@ -36,7 +36,8 @@ def homepageview(request):
     acc =OrderModel.objects.aggregate(po =Count('product'))
     amount=OrderModel.objects.aggregate(the_sum = Sum(F('product__mrp')+F('accessories__mrp')))
     cust=CustomerModel.objects.filter(walk_in_date__contains=date.today()).count()
-    params={'retail':retail,'fullcust':fullcust,'product':product,'acc':acc,'cust':cust,'amount':amount}
+    acc_graph = OrderModel.objects.values('product_id').order_by('product_id').annotate(cou=Count('product'))
+    params={'retail':retail,'fullcust':fullcust,'product':product,'acc':acc,'cust':cust,'amount':amount,'data':acc_graph}
     return render(request,'homepage.html',params)
 
 def successview(request):
