@@ -1,11 +1,24 @@
+from django import forms
 from django.db.models import fields
 from django.forms import ModelForm
+from django.forms.widgets import DateInput
 from .models import *
 
+class DateInput(forms.DateInput):
+    input_type = 'date'
+  
 class Customer(ModelForm):
     class Meta:
         model = CustomerModel
-        fields ='__all__'
+        fields =fields='__all__'
+        widgets = {
+            'walk_in_date':DateInput(),
+            'visit_date':DateInput(),
+            'measure_date' :DateInput(),
+            'login_date' :DateInput(),
+            'dispatch_date' :DateInput(),
+            'install_date':DateInput(),
+        }
         
 class Designer(ModelForm):
     class Meta:
