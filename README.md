@@ -1,4 +1,4 @@
-# sanjivini_home_sols
+# Modular Kitchen Management System
 This project is developed for a client, owner of Sanjivini Home Solutions at Dharwad , Karnataka.
 Through this website the client can manage his product's and customer's details. The payment history is maintained and bills and receipts are printed for each order.
 
